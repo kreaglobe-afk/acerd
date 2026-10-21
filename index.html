@@ -1,118 +1,82 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kit moodboard ACERD</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Script voix off ACERD</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--o:#F5961A;--v:#2EAB66;--b:#8ACFDE;--r:#E84538;--m:#2B385C;--bg:#f4f6fa;--card:#fff;--txt:#2B385C}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:Poppins,sans-serif;color:var(--txt)}
+:root{--o:#F5961A;--v:#2EAB66;--b:#8ACFDE;--r:#E84538;--m:#2B385C;--bg:#f6f7fa}
+body{margin:0;background:var(--bg);font-family:Poppins,sans-serif;color:var(--m)}
+header{background:var(--m);color:#fff;padding:40px 24px}
 .bar{display:flex;height:6px}.bar i{flex:1}
-header{background:radial-gradient(1200px 400px at 80% 0%,#3b4d7d,var(--m));color:#fff;padding:44px 16px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
-header h1{margin:0 0 8px;font-size:32px;font-weight:800}
-header p{margin:0;opacity:.85;max-width:760px;line-height:1.6}
-main{padding:28px 0 70px}
-h2{font-size:22px;margin:34px 0 14px}
-.steps{background:var(--card);border-radius:14px;padding:20px 24px;line-height:1.75;box-shadow:0 2px 10px rgba(43,56,92,.08)}
-.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
-.refs figure{margin:0;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(43,56,92,.08)}
-.refs img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#dde}
-.refs figcaption{font-size:12px;padding:8px 10px;font-weight:600}
-.p{background:var(--card);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(43,56,92,.08)}
-.p .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.p h3{margin:0;font-size:18px}
-.tag{display:inline-block;font-size:12px;background:var(--b);padding:3px 10px;border-radius:20px;margin:8px 6px 0 0}
-.tag.o{background:#fde3c0}
-pre{white-space:pre-wrap;background:#1d2640;color:#e8ecf6;border-radius:10px;padding:16px;font-size:13px;line-height:1.6;margin:12px 0 0;font-family:Consolas,monospace}
-button{font:600 13px Poppins,sans-serif;background:var(--o);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
-button.ok{background:var(--v)}
-.warn{background:#fff4e3;border-left:4px solid var(--o);padding:14px 18px;border-radius:8px;font-size:14px;line-height:1.6}
-</style>
-</head>
-<body>
+header h1{margin:0 0 6px;font-size:28px}header p{margin:0;opacity:.85}
+.kpi{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}.kpi b{font-size:30px;color:var(--o);display:block}
+main{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
+section{display:flex;gap:18px;background:#fff;border-radius:14px;padding:22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(43,56,92,.08)}
+.num{font-size:34px;font-weight:700;color:var(--v);min-width:52px}
+.body{flex:1;min-width:0}.head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+h2{margin:0;font-size:20px}.tc{font-size:13px;background:var(--b);padding:3px 10px;border-radius:20px}
+.src{font-size:12px;opacity:.6;margin:4px 0 10px}
+.cols{display:grid;grid-template-columns:3fr 2fr;gap:20px}
+h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--r);margin:0 0 6px}
+.vo{margin:0;line-height:1.65}ul{margin:0;padding-left:18px;font-size:14px;line-height:1.6}
+.note{background:#fff4e3;border-left:4px solid var(--o);padding:16px 20px;border-radius:8px;margin-bottom:22px;font-size:14px;line-height:1.6}
+@media(max-width:700px){.cols{grid-template-columns:1fr}section{flex-direction:column;gap:4px}}
+</style></head><body>
 <div class="bar"><i style="background:var(--o)"></i><i style="background:var(--v)"></i><i style="background:var(--b)"></i><i style="background:var(--r)"></i></div>
-<header><div class="wrap">
-<h1>Kit moodboard — vidéo AG ACERD</h1>
-<p>Prompts prêts à coller dans Gemini (Nano Banana) ou ChatGPT pour générer un moodboard, une image par écran. Le style s'inspire de la vidéo de référence (partie « 100 jours »), passé aux couleurs ACERD. Format 16:9, sans aucune personne à l'écran.</p>
-</div></header>
-<main class="wrap">
-
-<h2>Marche à suivre</h2>
-<div class="steps">
-1. Ouvrir <b>gemini.google.com</b> (modèle image « Nano Banana ») ou ChatGPT, dans une <b>nouvelle conversation</b>.<br>
-2. <b>Message 1</b> : coller le prompt « ADN visuel » ci-dessous et joindre <b>REF-0, REF-1 et REF-2</b>.<br>
-3. <b>Messages suivants</b> : un prompt par écran, en joignant les références indiquées sur chaque carte.<br>
-4. Si une image dérive (texte déformé, personnes, mauvaises couleurs), répondre : <i>« Same image, fix: … »</i> plutôt que de tout relancer.<br>
-5. Déposer les images retenues dans <code>livrables/kit-moodboard/resultats/</code> : je reproduis ensuite le style retenu dans Remotion, avec les vrais logos et les vrais chiffres.
-</div>
-
-<h2>Références à joindre</h2>
-<div class="refs">
-<figure><img src="references/REF-0-logo-charte-ACERD.jpeg" alt=""><figcaption>REF-0 · logo et charte ACERD</figcaption></figure>
-<figure><img src="references/REF-1-tuiles-chiffres.png" alt=""><figcaption>REF-1 · tuiles de chiffres</figcaption></figure>
-<figure><img src="references/REF-2-texte-centre.png" alt=""><figcaption>REF-2 · texte centré + schéma</figcaption></figure>
-<figure><img src="references/REF-3-phrase-cle.png" alt=""><figcaption>REF-3 · phrase-clé</figcaption></figure>
-<figure><img src="references/REF-4-carte-logos.png" alt=""><figcaption>REF-4 · carte de logos</figcaption></figure>
-<figure><img src="references/LOGO-a.jpeg" alt=""><figcaption>LOGO-a · reçu de Grâce</figcaption></figure>
-<figure><img src="references/LOGO-b.jpeg" alt=""><figcaption>LOGO-b · reçu de Grâce</figcaption></figure>
-</div>
-
-<h2>Règle importante</h2>
-<div class="warn">Les générateurs d'images <b>déforment les logos et les petits textes</b>. Les prompts demandent donc des <b>emplacements de logos vides</b> et seulement quelques mots courts. Les vrais logos, chiffres et textes seront posés au montage. Le moodboard sert à choisir l'<b>ambiance</b> : fond, lumière, tuiles, mise en page.</div>
-
-<h2>Les prompts</h2>
-<div id="list"></div>
-
-</main>
-<script>
-const ADN = `You are the art director of a premium broadcast motion-design video for ACERD, the Congolese Association for Renewable and Decentralised Energy (DR Congo). I attach: REF-0 = ACERD logo and colour chart, REF-1 and REF-2 = frames from a reference video whose style we want to match.
-
-Create a consistent visual system for 12 style frames (16:9, 1920x1080). Every frame must follow this DNA:
-- STRICT PALETTE (from REF-0, nothing else): navy #2B385C, orange #F5961A, green #2EAB66, light blue #8ACFDE, red #E84538, plus white. Never a generic royal blue, never purple.
-- Background: ACERD navy #2B385C (dominant, not black), with soft colour glows in the corners (orange, green, light blue, red at low opacity) and very faint light-blue line-art (10% opacity) of energy infrastructure in perspective: solar panel fields, a hydro dam, high-voltage pylons, a city skyline. Soft diagonal volumetric light beams and a few glowing light streaks, like REF-1.
-- Signature motif: the ACERD open hexagon made of 4 rounded strokes (orange #F5961A, green #2EAB66, light blue #8ACFDE, red #E84538), used as glowing outlines, frames and transitions.
-- Typography: bold geometric sans-serif (like Poppins ExtraBold), white, centred, short lines. Key words highlighted in orange #F5961A or green #2EAB66, like REF-2.
-- Data: big thin numerals inside solid colour tiles (orange, green, light blue, red) and frosted-glass tiles that assemble like a bento grid, with small flat white glyph icons, like REF-1.
-- Finish: crisp, cinematic, high-end corporate, subtle depth of field, soft glow, clean film grain. Generous negative space.
-- STRICT: no people, no faces, no hands. No invented logos: when a logo is needed, draw an empty white rounded slot. French text only, spelled exactly as given, nothing else written.
-
-Reply "OK" and wait for my frames, one by one.`;
-
-const P = [
-["01 · Ouverture","REF-0, REF-1",`Frame 1 — Opening title. Centre: the ACERD logo (REF-0) on the navy background, its 4 hexagon strokes glowing as if drawn with light. Below it, in white: "Assemblée générale" and, larger, "22 octobre 2026" with "22 octobre" in orange #F5961A. Slow light sweep across the frame, faint solar field line-art at the bottom. Calm, solemn, premium.`],
-["02 · ACERD en chiffres","REF-1",`Frame 2 — Key figures. Left third: big white title "7 ans d'action" with "7 ans" in orange. Right two thirds: a bento grid of 8 tiles assembling, mixing solid tiles (orange, green, light blue, red) and frosted glass tiles, each with one big thin numeral, a short French label and a small white glyph icon: "+35 membres", "+20 partenaires", "13 protocoles d'accord", "6 conventions", "+18 forums", "7 missions", "7 expositions", "3 cohortes formées". Light streaks between tiles, like REF-1.`],
-["03 · Partenaires et conseil d'administration","REF-4",`Frame 3 — Partners and board. Top half: a large white rounded card (like REF-4) floating with soft shadow, containing a neat grid of 16 EMPTY logo slots (light grey rounded rectangles, no logos drawn). Bottom half: title "Le conseil d'administration" in white, then an org-chart of 5 circular white badges with thin glowing rings: 2 on top (labels "Présidence", "Vice-présidence"), 3 below (label "Administrateurs"). Badges are empty (logos added later).`],
-["04 · Le constat","REF-2, REF-3",`Frame 4 — The problem. Centre, two lines of big white text: "En RDC, l'énergie renouvelable avance…" then, larger, "mais qui sont vraiment ses acteurs ?" with "acteurs" in orange. Around the text, 4 small frosted-glass cards fading in, each with a red #E84538 warning glyph: "Aucun registre unique", "Échéances invisibles", "Demandes sans trace", "Qualité non vérifiée". Scattered paper sheets and folders drawn in faint line-art in the background, slightly chaotic.`],
-["05 · Le portail","REF-1, REF-2",`Frame 5 — The solution. A sleek laptop in 3/4 view floating centre-left, its screen showing a clean dashboard in ACERD colours (abstract, no readable text except the header "Portail national"), with a tablet and a phone layered behind it. Right side: 4 stacked pill buttons, each a different ACERD colour with a white glyph: "Répertorier", "Vérifier", "Notifier", "Dialoguer". Title at top: "Portail national des acteurs privés de l'énergie" in white, "Portail national" in green. Hexagon light outlines around the devices.`],
-["06 · Les 5 objectifs","REF-2",`Frame 6 — Five objectives. A vertical timeline on the left with 5 numbered hexagon nodes (01 to 05) in the 4 ACERD colours, connected by a glowing line. Next to each node, one short white line: "Point d'entrée des défis du secteur", "Dialogue avec les ministères", "La plateforme du secteur privé", "Guide vers les autorisations", "Lever les blocages". Right side: a large faint ACERD hexagon outline with depth. Elegant, airy.`],
-["07 · La méthode (haut-parleur)","REF-2",`Frame 7 — The method as a megaphone / funnel. Horizontal 3D funnel shape opening from left to right (like a loudspeaker), made of glowing translucent segments in light blue, green and orange. Labels around it: "Identifier les défis" (above left), "Collaborer avec les départements" (below), "Trouver des solutions" (above right), and at the exit on the right, a bright tile "Des projets" in green. Clean flat glyph icons inside each segment.`],
-["08 · Groupe de travail technique","REF-1, REF-4",`Frame 8 — Technical working group. Centre: a glowing circle hub with the text "Groupe de travail technique" in white. Around it, 6 white rounded logo cards popping out in a ring, connected to the hub by thin glowing lines in ACERD colours. The 6 cards are EMPTY (logos added later). Subtle pulse rings around the hub.`],
-["09 · L'impact","REF-1",`Frame 9 — Impact dashboard. Top: two huge KPI tiles side by side: "… MW ?" (light blue tile) and "… M$ ?" (orange tile), the question marks glowing. Bottom left: a donut chart titled "Projets par technologie" with 4 segments labelled "Hydro", "Solaire", "Biomasse", "Groupe diesel". Bottom centre: a stylised outline map of DR Congo with 4 glowing points labelled "Haut-Katanga", "Lualaba", "Nord-Kivu", "Kinshasa". Bottom right: a 3-bar chart titled "Emplois" with bars "Construction", "Exploitation", "Total". Bottom-right corner, tiny discreet text: "Données illustratives".`],
-["10 · Les défis institutionnels","REF-1",`Frame 10 — Institutional bottlenecks. Top: a big green #2EAB66 tile "12 blocages levés au T1". Below: a sleek frosted-glass table with 3 columns "Structure", "Procédure", "Délai" and 5 rows, each row starting with a small EMPTY white logo slot, then short text: "Lettre de non-objection", "Licence", "Autorisation", "Autorisation", "Étude d'impact", and delays shown as small orange progress bars with "90 j". Tiny discreet text bottom-right: "Données illustratives".`],
-["11 · La trajectoire","REF-2",`Frame 11 — The pathway. A sequence of 5 large chevron arrows moving left to right and slightly upward, each in a different tone of the ACERD palette (light blue → green → orange → red → bright white-gold glow at the end). On each chevron, one short white line: "Lever les barrières", "Simplifier les autorisations", "Collaborer étroitement", "Bénéfices économiques et environnementaux", "Un secteur en croissance". Faint solar fields and pylons in line-art below, sunrise glow on the horizon.`],
-["12 · Fermeture","REF-0",`Frame 12 — Closing. Centre: big white "Merci" with a soft glow. Below it, the ACERD logo (REF-0) and the line "Assemblée générale — 22 octobre 2026". The 4 hexagon strokes of the logo extend into long light trails flowing out of frame. Peaceful, premium ending, deep navy with a warm orange horizon glow.`]
-];
-
-const list = document.getElementById('list');
-const card = (title, refs, txt, first) => {
-  const d = document.createElement('div'); d.className = 'p';
-  d.innerHTML = `<div class="top"><h3>${title}</h3><button>Copier</button></div>
-  <span class="tag ${first ? 'o' : ''}">${first ? 'À envoyer en premier' : 'Joindre : ' + refs}</span><pre></pre>`;
-  d.querySelector('pre').textContent = txt;
-  const b = d.querySelector('button');
-  b.onclick = async () => {
-    try { await navigator.clipboard.writeText(txt); } catch (e) {
-      const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
-    }
-    b.textContent = 'Copié ✓'; b.className = 'ok'; setTimeout(() => { b.textContent = 'Copier'; b.className = ''; }, 1500);
-  };
-  list.appendChild(d);
-};
-card('00 · ADN visuel (message 1)', 'REF-0, REF-1, REF-2', ADN, true);
-P.forEach(([t, r, x]) => card(t, r, x, false));
-</script>
-</body>
-</html>
+<header><h1>Script de la voix off — vidéo AG ACERD</h1><p>Portail national des acteurs privés de l&#x27;énergie — AG ACERD du 22 octobre 2026</p>
+<div class="kpi"><div><b>12</b>écrans</div><div><b>629</b>mots</div><div><b>≈ 5:29</b>durée estimée</div><div><b>Vivienne</b>voix edge-tts</div></div></header>
+<main>
+<div class="note"><b>À faire valider par Grâce avant le montage :</b><br>
+1. « 7 ans » : le rapport indique « 06 années d'existence » (2018-2025). Madame Catherine a dit « sept ans ». Nous gardons 7, à confirmer.<br>
+2. Étudiants formés : le rapport ne donne pas de nombre, seulement 3 cohortes. Un chiffre exact est-il disponible ?<br>
+3. « FEC » ou « AFEC » : la réunion dit « AFEC », mais le rapport ne cite que la FEC (Fédération des Entreprises du Congo).<br>
+4. Provinces : nous en retenons 4 (Haut-Katanga, Lualaba, Nord-Kivu, Kinshasa). Faut-il ajouter le Katanga ?<br>
+5. Écrans 9 et 10 : chiffres fictifs, avec la mention « Données illustratives ».</div>
+<section><div class="num">01</div><div class="body">
+<div class="head"><h2>Ouverture</h2><span class="tc">0:00 – 0:22 · 43 mots · 5 s musique</span></div>
+<div class="src">Source : Logo ACERD</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Assemblée générale de l&#x27;ACERD. Vingt-deux octobre deux mille vingt-six. Depuis 2018, l&#x27;Association congolaise pour les énergies renouvelables et décentralisées porte la voix du secteur privé des énergies renouvelables en République démocratique du Congo. Une ambition nous guide : faire de l&#x27;ACERD un pionnier. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Logo ACERD animé</li><li>Assemblée générale</li><li>22 octobre 2026</li></ul></div></div></div></section><section><div class="num">02</div><div class="body">
+<div class="head"><h2>ACERD en chiffres</h2><span class="tc">0:22 – 1:11 · 110 mots · 5 s musique</span></div>
+<div class="src">Source : Rapport 2025, p. 3</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Sept ans après sa création, voici ce que notre association a bâti. Plus de trente-cinq nouveaux membres ont rejoint nos rangs. Plus de vingt partenaires de développement nous accompagnent. Treize protocoles d&#x27;accord ont été signés, et six conventions de financement conclues. Nous avons pris part à plus de dix-huit forums, mené sept missions stratégiques et organisé sept expositions des technologies renouvelables. Notre Académie a formé trois cohortes de jeunes en photovoltaïque : des profils opérationnels, prêts à intégrer le marché. Cinq projets structurants ont été menés, de l&#x27;harmonisation des taxes dans la SADC à la validation des normes. Et l&#x27;ACERD reste la première association sectorielle des énergies renouvelables en RDC. »</p></div>
+<div><h3>À l'écran</h3><ul><li>7 ans d&#x27;action</li><li>+35 nouveaux membres</li><li>+20 partenaires de développement</li><li>13 protocoles d&#x27;accord signés</li><li>6 conventions de financement</li><li>+18 forums</li><li>7 missions stratégiques</li><li>7 expositions</li><li>3 cohortes formées à l&#x27;Académie</li><li>5 projets structurants</li><li>1re association sectorielle des ER en RDC</li></ul></div></div></div></section><section><div class="num">03</div><div class="body">
+<div class="head"><h2>Partenaires, membres et conseil d&#x27;administration</h2><span class="tc">1:11 – 1:41 · 49 mots · 10 s musique</span></div>
+<div class="src">Source : Rapport 2025, p. 4 et 34</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Ces résultats, nous les devons à nos membres et à nos partenaires : autorités, agences publiques, partenaires techniques et financiers. Merci pour leur engagement, leur expertise et leur confiance. Et notre conseil d&#x27;administration : Congo Energy à la présidence, Orange à la vice-présidence, Weast, Bboxx et GoShop comme administrateurs. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Mur de logos des partenaires (p. 34)</li><li>Le conseil d&#x27;administration</li><li>Présidence : Congo Energy</li><li>Vice-présidence : Orange</li><li>Administrateurs : Weast, Bboxx, GoShop</li></ul></div></div></div></section><section><div class="num">04</div><div class="body">
+<div class="head"><h2>Le constat</h2><span class="tc">1:41 – 2:10 · 65 mots · 3 s musique</span></div>
+<div class="src">Source : Fiche vidéo + Présentation Portail, slide 2</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Aujourd&#x27;hui, la digitalisation est un axe crucial. Car un constat s&#x27;impose. En RDC, l&#x27;énergie renouvelable avance. Mais qui sont vraiment ses acteurs ? Il n&#x27;existe aucun registre unique. Les échéances des licences et des permis passent inaperçues. Les demandes se perdent, sans aucune trace. Et la qualité des équipements mis sur le marché n&#x27;est pas vérifiée. Résultat : le secteur ne se connaît pas lui-même. »</p></div>
+<div><h3>À l'écran</h3><ul><li>La digitalisation, un axe crucial</li><li>En RDC, l&#x27;énergie renouvelable avance…</li><li>… mais qui sont vraiment ses acteurs ?</li><li>Aucun registre unique</li><li>Des échéances invisibles</li><li>Des demandes sans trace</li><li>Une qualité non vérifiée</li></ul></div></div></div></section><section><div class="num">05</div><div class="body">
+<div class="head"><h2>Le portail</h2><span class="tc">2:10 – 2:41 · 67 mots · 4 s musique</span></div>
+<div class="src">Source : Présentation Portail, slide 3</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« C&#x27;est pourquoi l&#x27;ACERD lance le Portail national des acteurs privés de l&#x27;énergie. Une plateforme unique, accessible sur ordinateur, tablette et téléphone, avec quatre fonctions. Répertorier : un registre national des producteurs et des vendeurs d&#x27;équipements. Vérifier : chaque autorisation, avec sa date de validité. Notifier : des alertes par e-mail et SMS avant chaque échéance. Dialoguer : déposer une demande et suivre son traitement, étape par étape. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Portail national des acteurs privés de l&#x27;énergie</li><li>Répertorier</li><li>Vérifier</li><li>Notifier</li><li>Dialoguer</li></ul></div></div></div></section><section><div class="num">06</div><div class="body">
+<div class="head"><h2>Les 5 objectifs (EOSS slide 2)</h2><span class="tc">2:41 – 3:13 · 72 mots · 4 s musique</span></div>
+<div class="src">Source : EOSS, slide 2, traduite</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Le portail répond à cinq objectifs. Un : être le point d&#x27;entrée unique pour les défis du secteur en RDC. Deux : travailler avec les ministères et les structures publiques pour simplifier les procédures. Trois : offrir au secteur privé sa plateforme, portée par l&#x27;ACERD aux côtés de la FEC. Quatre : guider les porteurs de projets dans l&#x27;obtention de leurs autorisations. Cinq : rendre compte des avancées et lever les blocages. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Point d&#x27;entrée des défis du secteur</li><li>Travail avec les ministères et structures</li><li>Plateforme du secteur privé (ACERD + FEC)</li><li>Guide pour les autorisations</li><li>Lever les blocages</li></ul></div></div></div></section><section><div class="num">07</div><div class="body">
+<div class="head"><h2>La méthode — haut-parleur (EOSS slide 5)</h2><span class="tc">3:13 – 3:30 · 26 mots · 6 s musique</span></div>
+<div class="src">Source : EOSS, slide 5, recréée</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Notre méthode tient en quatre temps. On identifie les défis. On collabore avec les départements concernés. On trouve des solutions. Et l&#x27;on aboutit à des projets. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Identifier les défis</li><li>Collaborer avec les départements</li><li>Trouver des solutions</li><li>Aboutir à des projets</li></ul></div></div></div></section><section><div class="num">08</div><div class="body">
+<div class="head"><h2>Groupe de travail technique (EOSS slide 7)</h2><span class="tc">3:30 – 3:54 · 38 mots · 9 s musique</span></div>
+<div class="src">Source : EOSS, slide 7 + logos reçus</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Pour y parvenir, un groupe de travail technique réunit nos partenaires publics : le ministère des Ressources hydrauliques et de l&#x27;Électricité, le Secrétariat général, l&#x27;ANSER, l&#x27;Autorité de régulation du secteur de l&#x27;électricité, l&#x27;UCM et l&#x27;Agence congolaise de l&#x27;environnement. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Groupe de travail technique</li><li>Logos en pop-up : Ministère RHE, Secrétariat général, ANSER, ARE, UCM, ACE</li></ul></div></div></div></section><section><div class="num">09</div><div class="body">
+<div class="head"><h2>L&#x27;impact (EOSS slide 8)</h2><span class="tc">3:54 – 4:26 · 56 mots · 10 s musique</span></div>
+<div class="src">Source : EOSS, slide 8, chiffres fictifs</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Quel impact pour le pays ? Combien de mégawatts installés ? Combien de dollars investis ? Le portail permettra enfin de le mesurer. Projet par projet, selon la technologie : hydroélectricité, solaire, biomasse et groupes électrogènes. Selon la province : Haut-Katanga, Lualaba, Nord-Kivu et Kinshasa. Et surtout, des emplois : pendant la construction comme pendant l&#x27;exploitation. »</p></div>
+<div><h3>À l'écran</h3><ul><li>… MW ?</li><li>… M$ ?</li><li>Projets par technologie : hydro 12 · solaire 24 · biomasse 5 · groupe diesel 7</li><li>Projets par province : Haut-Katanga 15 · Lualaba 11 · Nord-Kivu 9 · Kinshasa 13</li><li>Emplois : construction 6 400 · exploitation 900 · total 7 300</li><li>Mention : Données illustratives</li></ul></div></div></div></section><section><div class="num">10</div><div class="body">
+<div class="head"><h2>Les défis institutionnels (EOSS slide 12)</h2><span class="tc">4:26 – 4:49 · 33 mots · 9 s musique</span></div>
+<div class="src">Source : EOSS, slide 12, délais fictifs</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Le portail suit chaque blocage administratif, structure par structure : lettre de non-objection, licence, autorisation, étude d&#x27;impact, avec leurs délais. Objectif : lever ces blocages, et compter, trimestre après trimestre, les blocages levés. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Blocages levés au T1 : 12</li><li>Ministère RHE · Lettre de non-objection · 60 à 180 j</li><li>ARE · Licence · 90 à 365 j</li><li>ANSER · Autorisation · 90 j</li><li>Secrétariat général · Autorisation · 30 à 90 j</li><li>UCM · Étude d&#x27;impact · 90 à 365 j</li><li>Mention : Données illustratives</li></ul></div></div></div></section><section><div class="num">11</div><div class="body">
+<div class="head"><h2>La trajectoire (EOSS slide 23)</h2><span class="tc">4:49 – 5:12 · 47 mots · 5 s musique</span></div>
+<div class="src">Source : EOSS, slide 23, adaptée</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Le chemin est tracé. Lever les barrières. Simplifier les autorisations. Collaborer étroitement avec chaque structure. Faire naître des bénéfices économiques et environnementaux. Et faire grandir tout un secteur. Pour que les énergies renouvelables ne soient plus une alternative, mais une évidence pour le développement de la RDC. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Lever les barrières</li><li>Simplifier les autorisations</li><li>Collaborer étroitement avec les structures</li><li>Des bénéfices économiques et environnementaux</li><li>Un secteur en croissance</li></ul></div></div></div></section><section><div class="num">12</div><div class="body">
+<div class="head"><h2>Fermeture</h2><span class="tc">5:12 – 5:29 · 23 mots · 7 s musique</span></div>
+<div class="src">Source : EOSS, fin</div>
+<div class="cols"><div><h3>Voix off</h3><p class="vo">« Merci à nos membres, à nos partenaires et aux autorités pour leur confiance. Ensemble, construisons un marché structuré et porteur d&#x27;opportunités. ACERD asbl. »</p></div>
+<div><h3>À l'écran</h3><ul><li>Merci</li><li>Logo ACERD</li><li>Assemblée générale — 22 octobre 2026</li></ul></div></div></div></section>
+</main></body></html>
