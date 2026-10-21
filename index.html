@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit moodboard ACERD</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#F5961A;--v:#2EAB66;--b:#8ACFDE;--r:#E84538;--m:#2B385C;--bg:#f4f6fa;--card:#fff;--txt:#2B385C}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Poppins,sans-serif;color:var(--txt)}
+.bar{display:flex;height:6px}.bar i{flex:1}
+header{background:radial-gradient(1200px 400px at 80% 0%,#3b4d7d,var(--m));color:#fff;padding:44px 16px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header h1{margin:0 0 8px;font-size:32px;font-weight:800}
+header p{margin:0;opacity:.85;max-width:760px;line-height:1.6}
+main{padding:28px 0 70px}
+h2{font-size:22px;margin:34px 0 14px}
+.steps{background:var(--card);border-radius:14px;padding:20px 24px;line-height:1.75;box-shadow:0 2px 10px rgba(43,56,92,.08)}
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.refs figure{margin:0;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(43,56,92,.08)}
+.refs img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#dde}
+.refs figcaption{font-size:12px;padding:8px 10px;font-weight:600}
+.p{background:var(--card);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(43,56,92,.08)}
+.p .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.p h3{margin:0;font-size:18px}
+.tag{display:inline-block;font-size:12px;background:var(--b);padding:3px 10px;border-radius:20px;margin:8px 6px 0 0}
+.tag.o{background:#fde3c0}
+pre{white-space:pre-wrap;background:#1d2640;color:#e8ecf6;border-radius:10px;padding:16px;font-size:13px;line-height:1.6;margin:12px 0 0;font-family:Consolas,monospace}
+button{font:600 13px Poppins,sans-serif;background:var(--o);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+button.ok{background:var(--v)}
+.warn{background:#fff4e3;border-left:4px solid var(--o);padding:14px 18px;border-radius:8px;font-size:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="bar"><i style="background:var(--o)"></i><i style="background:var(--v)"></i><i style="background:var(--b)"></i><i style="background:var(--r)"></i></div>
+<header><div class="wrap">
+<h1>Kit moodboard — vidéo AG ACERD</h1>
+<p>Prompts prêts à coller dans Gemini (Nano Banana) ou ChatGPT pour générer un moodboard, une image par écran. Le style s'inspire de la vidéo de référence (partie « 100 jours »), passé aux couleurs ACERD. Format 16:9, sans aucune personne à l'écran.</p>
+</div></header>
+<main class="wrap">
+
+<h2>Marche à suivre</h2>
+<div class="steps">
+1. Ouvrir <b>gemini.google.com</b> (modèle image « Nano Banana ») ou ChatGPT, dans une <b>nouvelle conversation</b>.<br>
+2. <b>Message 1</b> : coller le prompt « ADN visuel » ci-dessous et joindre <b>REF-0, REF-1 et REF-2</b>.<br>
+3. <b>Messages suivants</b> : un prompt par écran, en joignant les références indiquées sur chaque carte.<br>
+4. Si une image dérive (texte déformé, personnes, mauvaises couleurs), répondre : <i>« Same image, fix: … »</i> plutôt que de tout relancer.<br>
+5. Déposer les images retenues dans <code>livrables/kit-moodboard/resultats/</code> : je reproduis ensuite le style retenu dans Remotion, avec les vrais logos et les vrais chiffres.
+</div>
+
+<h2>Références à joindre</h2>
+<div class="refs">
+<figure><img src="references/REF-0-logo-charte-ACERD.jpeg" alt=""><figcaption>REF-0 · logo et charte ACERD</figcaption></figure>
+<figure><img src="references/REF-1-tuiles-chiffres.png" alt=""><figcaption>REF-1 · tuiles de chiffres</figcaption></figure>
+<figure><img src="references/REF-2-texte-centre.png" alt=""><figcaption>REF-2 · texte centré + schéma</figcaption></figure>
+<figure><img src="references/REF-3-phrase-cle.png" alt=""><figcaption>REF-3 · phrase-clé</figcaption></figure>
+<figure><img src="references/REF-4-carte-logos.png" alt=""><figcaption>REF-4 · carte de logos</figcaption></figure>
+<figure><img src="references/LOGO-a.jpeg" alt=""><figcaption>LOGO-a · reçu de Grâce</figcaption></figure>
+<figure><img src="references/LOGO-b.jpeg" alt=""><figcaption>LOGO-b · reçu de Grâce</figcaption></figure>
+</div>
+
+<h2>Règle importante</h2>
+<div class="warn">Les générateurs d'images <b>déforment les logos et les petits textes</b>. Les prompts demandent donc des <b>emplacements de logos vides</b> et seulement quelques mots courts. Les vrais logos, chiffres et textes seront posés au montage. Le moodboard sert à choisir l'<b>ambiance</b> : fond, lumière, tuiles, mise en page.</div>
+
+<h2>Les prompts</h2>
+<div id="list"></div>
+
+</main>
+<script>
+const ADN = `You are the art director of a premium broadcast motion-design video for ACERD, the Congolese Association for Renewable and Decentralised Energy (DR Congo). I attach: REF-0 = ACERD logo and colour chart, REF-1 and REF-2 = frames from a reference video whose style we want to match.
+
+Create a consistent visual system for 12 style frames (16:9, 1920x1080). Every frame must follow this DNA:
+- STRICT PALETTE (from REF-0, nothing else): navy #2B385C, orange #F5961A, green #2EAB66, light blue #8ACFDE, red #E84538, plus white. Never a generic royal blue, never purple.
+- Background: ACERD navy #2B385C (dominant, not black), with soft colour glows in the corners (orange, green, light blue, red at low opacity) and very faint light-blue line-art (10% opacity) of energy infrastructure in perspective: solar panel fields, a hydro dam, high-voltage pylons, a city skyline. Soft diagonal volumetric light beams and a few glowing light streaks, like REF-1.
+- Signature motif: the ACERD open hexagon made of 4 rounded strokes (orange #F5961A, green #2EAB66, light blue #8ACFDE, red #E84538), used as glowing outlines, frames and transitions.
+- Typography: bold geometric sans-serif (like Poppins ExtraBold), white, centred, short lines. Key words highlighted in orange #F5961A or green #2EAB66, like REF-2.
+- Data: big thin numerals inside solid colour tiles (orange, green, light blue, red) and frosted-glass tiles that assemble like a bento grid, with small flat white glyph icons, like REF-1.
+- Finish: crisp, cinematic, high-end corporate, subtle depth of field, soft glow, clean film grain. Generous negative space.
+- STRICT: no people, no faces, no hands. No invented logos: when a logo is needed, draw an empty white rounded slot. French text only, spelled exactly as given, nothing else written.
+
+Reply "OK" and wait for my frames, one by one.`;
+
+const P = [
+["01 · Ouverture","REF-0, REF-1",`Frame 1 — Opening title. Centre: the ACERD logo (REF-0) on the navy background, its 4 hexagon strokes glowing as if drawn with light. Below it, in white: "Assemblée générale" and, larger, "22 octobre 2026" with "22 octobre" in orange #F5961A. Slow light sweep across the frame, faint solar field line-art at the bottom. Calm, solemn, premium.`],
+["02 · ACERD en chiffres","REF-1",`Frame 2 — Key figures. Left third: big white title "7 ans d'action" with "7 ans" in orange. Right two thirds: a bento grid of 8 tiles assembling, mixing solid tiles (orange, green, light blue, red) and frosted glass tiles, each with one big thin numeral, a short French label and a small white glyph icon: "+35 membres", "+20 partenaires", "13 protocoles d'accord", "6 conventions", "+18 forums", "7 missions", "7 expositions", "3 cohortes formées". Light streaks between tiles, like REF-1.`],
+["03 · Partenaires et conseil d'administration","REF-4",`Frame 3 — Partners and board. Top half: a large white rounded card (like REF-4) floating with soft shadow, containing a neat grid of 16 EMPTY logo slots (light grey rounded rectangles, no logos drawn). Bottom half: title "Le conseil d'administration" in white, then an org-chart of 5 circular white badges with thin glowing rings: 2 on top (labels "Présidence", "Vice-présidence"), 3 below (label "Administrateurs"). Badges are empty (logos added later).`],
+["04 · Le constat","REF-2, REF-3",`Frame 4 — The problem. Centre, two lines of big white text: "En RDC, l'énergie renouvelable avance…" then, larger, "mais qui sont vraiment ses acteurs ?" with "acteurs" in orange. Around the text, 4 small frosted-glass cards fading in, each with a red #E84538 warning glyph: "Aucun registre unique", "Échéances invisibles", "Demandes sans trace", "Qualité non vérifiée". Scattered paper sheets and folders drawn in faint line-art in the background, slightly chaotic.`],
+["05 · Le portail","REF-1, REF-2",`Frame 5 — The solution. A sleek laptop in 3/4 view floating centre-left, its screen showing a clean dashboard in ACERD colours (abstract, no readable text except the header "Portail national"), with a tablet and a phone layered behind it. Right side: 4 stacked pill buttons, each a different ACERD colour with a white glyph: "Répertorier", "Vérifier", "Notifier", "Dialoguer". Title at top: "Portail national des acteurs privés de l'énergie" in white, "Portail national" in green. Hexagon light outlines around the devices.`],
+["06 · Les 5 objectifs","REF-2",`Frame 6 — Five objectives. A vertical timeline on the left with 5 numbered hexagon nodes (01 to 05) in the 4 ACERD colours, connected by a glowing line. Next to each node, one short white line: "Point d'entrée des défis du secteur", "Dialogue avec les ministères", "La plateforme du secteur privé", "Guide vers les autorisations", "Lever les blocages". Right side: a large faint ACERD hexagon outline with depth. Elegant, airy.`],
+["07 · La méthode (haut-parleur)","REF-2",`Frame 7 — The method as a megaphone / funnel. Horizontal 3D funnel shape opening from left to right (like a loudspeaker), made of glowing translucent segments in light blue, green and orange. Labels around it: "Identifier les défis" (above left), "Collaborer avec les départements" (below), "Trouver des solutions" (above right), and at the exit on the right, a bright tile "Des projets" in green. Clean flat glyph icons inside each segment.`],
+["08 · Groupe de travail technique","REF-1, REF-4",`Frame 8 — Technical working group. Centre: a glowing circle hub with the text "Groupe de travail technique" in white. Around it, 6 white rounded logo cards popping out in a ring, connected to the hub by thin glowing lines in ACERD colours. The 6 cards are EMPTY (logos added later). Subtle pulse rings around the hub.`],
+["09 · L'impact","REF-1",`Frame 9 — Impact dashboard. Top: two huge KPI tiles side by side: "… MW ?" (light blue tile) and "… M$ ?" (orange tile), the question marks glowing. Bottom left: a donut chart titled "Projets par technologie" with 4 segments labelled "Hydro", "Solaire", "Biomasse", "Groupe diesel". Bottom centre: a stylised outline map of DR Congo with 4 glowing points labelled "Haut-Katanga", "Lualaba", "Nord-Kivu", "Kinshasa". Bottom right: a 3-bar chart titled "Emplois" with bars "Construction", "Exploitation", "Total". Bottom-right corner, tiny discreet text: "Données illustratives".`],
+["10 · Les défis institutionnels","REF-1",`Frame 10 — Institutional bottlenecks. Top: a big green #2EAB66 tile "12 blocages levés au T1". Below: a sleek frosted-glass table with 3 columns "Structure", "Procédure", "Délai" and 5 rows, each row starting with a small EMPTY white logo slot, then short text: "Lettre de non-objection", "Licence", "Autorisation", "Autorisation", "Étude d'impact", and delays shown as small orange progress bars with "90 j". Tiny discreet text bottom-right: "Données illustratives".`],
+["11 · La trajectoire","REF-2",`Frame 11 — The pathway. A sequence of 5 large chevron arrows moving left to right and slightly upward, each in a different tone of the ACERD palette (light blue → green → orange → red → bright white-gold glow at the end). On each chevron, one short white line: "Lever les barrières", "Simplifier les autorisations", "Collaborer étroitement", "Bénéfices économiques et environnementaux", "Un secteur en croissance". Faint solar fields and pylons in line-art below, sunrise glow on the horizon.`],
+["12 · Fermeture","REF-0",`Frame 12 — Closing. Centre: big white "Merci" with a soft glow. Below it, the ACERD logo (REF-0) and the line "Assemblée générale — 22 octobre 2026". The 4 hexagon strokes of the logo extend into long light trails flowing out of frame. Peaceful, premium ending, deep navy with a warm orange horizon glow.`]
+];
+
+const list = document.getElementById('list');
+const card = (title, refs, txt, first) => {
+  const d = document.createElement('div'); d.className = 'p';
+  d.innerHTML = `<div class="top"><h3>${title}</h3><button>Copier</button></div>
+  <span class="tag ${first ? 'o' : ''}">${first ? 'À envoyer en premier' : 'Joindre : ' + refs}</span><pre></pre>`;
+  d.querySelector('pre').textContent = txt;
+  const b = d.querySelector('button');
+  b.onclick = async () => {
+    try { await navigator.clipboard.writeText(txt); } catch (e) {
+      const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
+    }
+    b.textContent = 'Copié ✓'; b.className = 'ok'; setTimeout(() => { b.textContent = 'Copier'; b.className = ''; }, 1500);
+  };
+  list.appendChild(d);
+};
+card('00 · ADN visuel (message 1)', 'REF-0, REF-1, REF-2', ADN, true);
+P.forEach(([t, r, x]) => card(t, r, x, false));
+</script>
+</body>
+</html>
